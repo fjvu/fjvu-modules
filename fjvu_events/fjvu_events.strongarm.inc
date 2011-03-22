@@ -282,7 +282,7 @@ function fjvu_events_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'signup_user_list_view';
-  $strongarm->value = 'signup_user_list:page_1';
+  $strongarm->value = 'upcoming_events:default';
 
   $export['signup_user_list_view'] = $strongarm;
   $strongarm = new stdClass;
