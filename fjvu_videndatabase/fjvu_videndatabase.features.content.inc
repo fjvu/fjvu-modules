@@ -6,69 +6,6 @@
 function fjvu_videndatabase_content_default_fields() {
   $fields = array();
 
-  // Exported field: field_bedoem_indhold
-  $fields['videndatabase-field_bedoem_indhold'] = array(
-    'field_name' => 'field_bedoem_indhold',
-    'type_name' => 'videndatabase',
-    'display_settings' => array(
-      'weight' => '19',
-      'parent' => '',
-      'label' => array(
-        'format' => 'above',
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 1,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 1,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'fivestar',
-    'required' => '0',
-    'multiple' => '0',
-    'module' => 'fivestar',
-    'active' => '1',
-    'stars' => '5',
-    'dynamic_target' => '',
-    'php_target' => '',
-    'axis' => '',
-    'widget' => array(
-      'allow_clear' => 1,
-      'default_value' => array(
-        '0' => array(
-          'rating' => '60',
-          'target' => NULL,
-          'axis' => '',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Bedøm indhold',
-      'weight' => '16',
-      'description' => '',
-      'type' => 'stars',
-      'module' => 'fivestar',
-    ),
-  );
-
   // Exported field: field_eksterne_links
   $fields['videndatabase-field_eksterne_links'] = array(
     'field_name' => 'field_eksterne_links',
@@ -451,7 +388,6 @@ function fjvu_videndatabase_content_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Bedøm indhold');
   t('Eksterne links');
   t('Hent dokument');
   t('Image');
