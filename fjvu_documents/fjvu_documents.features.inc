@@ -24,7 +24,7 @@ function fjvu_documents_node_info() {
       'has_body' => '1',
       'body_label' => t('Kort beskrivelse af indholdet'),
       'min_word_count' => '0',
-      'help' => t('Det skal der også være styr på!'),
+      'help' => t('<p>Det skal der ogs&aring; v&aelig;re styr p&aring;!</p>'),
     ),
   );
   return $items;

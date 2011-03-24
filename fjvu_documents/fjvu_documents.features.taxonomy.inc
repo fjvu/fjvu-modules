@@ -6,7 +6,7 @@
 function fjvu_documents_taxonomy_default_vocabularies() {
   return array(
     'tags_documents' => array(
-      'name' => 'Tags',
+      'name' => 'Primære tags',
       'description' => '',
       'help' => '',
       'relations' => '1',
@@ -60,6 +60,21 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'required' => '0',
       'tags' => '1',
       'module' => 'features_tags_documents_publisher',
+      'weight' => '0',
+      'nodes' => array(
+        'documents' => 'documents',
+      ),
+    ),
+    'tags_documents_secondary' => array(
+      'name' => 'Sekundære tags',
+      'description' => '',
+      'help' => '',
+      'relations' => '1',
+      'hierarchy' => '0',
+      'multiple' => '1',
+      'required' => '0',
+      'tags' => '1',
+      'module' => 'features_tags_documents_secondary',
       'weight' => '0',
       'nodes' => array(
         'documents' => 'documents',

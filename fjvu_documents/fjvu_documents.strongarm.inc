@@ -9,7 +9,7 @@ function fjvu_documents_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_documents';
-  $strongarm->value = 0;
+  $strongarm->value = '0';
 
   $export['comment_anonymous_documents'] = $strongarm;
   $strongarm = new stdClass;
@@ -91,7 +91,7 @@ function fjvu_documents_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'form_build_id_documents';
-  $strongarm->value = 'form-ce7fc4cd412d1ccca65c07a8f413ac4f';
+  $strongarm->value = 'form-47da758d229908bcace15d379be8337c';
 
   $export['form_build_id_documents'] = $strongarm;
   $strongarm = new stdClass;
@@ -107,7 +107,6 @@ function fjvu_documents_strongarm() {
   $strongarm->name = 'node_options_documents';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
 
   $export['node_options_documents'] = $strongarm;
