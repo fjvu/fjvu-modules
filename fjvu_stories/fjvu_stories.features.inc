@@ -18,7 +18,7 @@ function fjvu_stories_node_info() {
     'story' => array(
       'name' => t('Artikel'),
       'module' => 'features',
-      'description' => t('En <em>artikel</em>, som minder om en <em>side</em>, gør det nemt at oprette og vise indhold, der informerer eller engagerer sitets besøgende. Pressemeddelelser, opslag og blog-lignende indlæg kan alle oprettes som <em>artikler</em>. Som standard vises <em>artikler</em> på sitets forside, og det er muligt for brugerne at skrive kommentarer.'),
+      'description' => t('Artikelformen er velegnet til nyheder, opslag, blogs og lignende. Artikelformen vises som standard på forsiden, og det er muligt for brugerne at skrive kommentarer til opslaget. '),
       'has_title' => '1',
       'title_label' => t('Titel'),
       'has_body' => '1',
@@ -28,4 +28,13 @@ function fjvu_stories_node_info() {
     ),
   );
   return $items;
+}
+
+/**
+ * Implementation of hook_views_api().
+ */
+function fjvu_stories_views_api() {
+  return array(
+    'api' => '2',
+  );
 }
