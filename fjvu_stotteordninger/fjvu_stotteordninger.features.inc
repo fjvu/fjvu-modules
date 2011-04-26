@@ -18,7 +18,7 @@ function fjvu_stotteordninger_node_info() {
     'stoetteordninger' => array(
       'name' => t('Støtteordninger'),
       'module' => 'features',
-      'description' => t('Tilpasset opsætning af støtteordninger'),
+      'description' => t('Støtteordningsformen bruges i forbindelse med at opsætte støtteordningssider til hjemmesiden'),
       'has_title' => '1',
       'title_label' => t('Støtteordning'),
       'has_body' => '1',

@@ -6,19 +6,23 @@
 function fjvu_documents_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: primary-links:documents
-  $menu_links['primary-links:documents'] = array(
-    'menu_name' => 'primary-links',
+  // Exported menu link: navigation:documents
+  $menu_links['navigation:documents'] = array(
+    'menu_name' => 'navigation',
     'link_path' => 'documents',
     'router_path' => 'documents',
     'link_title' => 'Videndatabase',
-    'options' => array(),
-    'module' => 'system',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-49',
   );
   // Translatables
   // Included for use with string extractors like potx.

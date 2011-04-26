@@ -15,7 +15,7 @@ function fjvu_stories_taxonomy_default_vocabularies() {
       'required' => '0',
       'tags' => '1',
       'module' => 'features_tags',
-      'weight' => '0',
+      'weight' => '-2',
       'nodes' => array(
         'story' => 'story',
       ),

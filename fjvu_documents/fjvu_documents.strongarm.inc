@@ -74,16 +74,18 @@ function fjvu_documents_strongarm() {
   $strongarm->name = 'content_extra_weights_documents';
   $strongarm->value = array(
     'title' => '-5',
-    'body_field' => '-4',
-    'revision_information' => '3',
-    'author' => '1',
-    'options' => '2',
-    'comment_settings' => '4',
-    'menu' => '0',
-    'taxonomy' => '-1',
-    'path' => '6',
-    'path_redirect' => '7',
-    'webfm_attachments' => '5',
+    'body_field' => '-3',
+    'revision_information' => '5',
+    'author' => '3',
+    'options' => '4',
+    'comment_settings' => '6',
+    'menu' => '2',
+    'taxonomy' => '0',
+    'path' => '8',
+    'flag' => '1',
+    'path_redirect' => '9',
+    'webfm_attachments' => '7',
+    'nodewords' => '10',
   );
 
   $export['content_extra_weights_documents'] = $strongarm;
@@ -91,7 +93,7 @@ function fjvu_documents_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'form_build_id_documents';
-  $strongarm->value = 'form-47da758d229908bcace15d379be8337c';
+  $strongarm->value = 'form-d045c2370a98a8929a45198cd264d40b';
 
   $export['form_build_id_documents'] = $strongarm;
   $strongarm = new stdClass;

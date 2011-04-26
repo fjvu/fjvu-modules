@@ -5,6 +5,21 @@
  */
 function fjvu_documents_taxonomy_default_vocabularies() {
   return array(
+    'documents_materials' => array(
+      'name' => 'Materialer',
+      'description' => '',
+      'help' => '',
+      'relations' => '1',
+      'hierarchy' => '0',
+      'multiple' => '0',
+      'required' => '0',
+      'tags' => '1',
+      'module' => 'features_documents_materials',
+      'weight' => '-7',
+      'nodes' => array(
+        'documents' => 'documents',
+      ),
+    ),
     'tags_documents' => array(
       'name' => 'Primære tags',
       'description' => '',
@@ -15,13 +30,13 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'required' => '0',
       'tags' => '1',
       'module' => 'features_tags_documents',
-      'weight' => '0',
+      'weight' => '-6',
       'nodes' => array(
         'documents' => 'documents',
       ),
     ),
     'tags_documents_authors' => array(
-      'name' => 'Authors',
+      'name' => 'Forfattere',
       'description' => '',
       'help' => '',
       'relations' => '1',
@@ -30,28 +45,43 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'required' => '0',
       'tags' => '1',
       'module' => 'features_tags_documents_authors',
-      'weight' => '0',
+      'weight' => '-9',
       'nodes' => array(
         'documents' => 'documents',
       ),
     ),
     'tags_documents_category' => array(
-      'name' => 'Documents category',
+      'name' => 'Kategori',
       'description' => '',
       'help' => '',
       'relations' => '1',
-      'hierarchy' => '1',
+      'hierarchy' => '0',
       'multiple' => '1',
       'required' => '1',
       'tags' => '0',
       'module' => 'features_tags_documents_category',
-      'weight' => '0',
+      'weight' => '-8',
+      'nodes' => array(
+        'documents' => 'documents',
+      ),
+    ),
+    'tags_documents_language' => array(
+      'name' => 'Sprog',
+      'description' => '',
+      'help' => '',
+      'relations' => '1',
+      'hierarchy' => '1',
+      'multiple' => '0',
+      'required' => '1',
+      'tags' => '0',
+      'module' => 'features_tags_documents_language',
+      'weight' => '-3',
       'nodes' => array(
         'documents' => 'documents',
       ),
     ),
     'tags_documents_publisher' => array(
-      'name' => 'Publisher',
+      'name' => 'Udgiver',
       'description' => '',
       'help' => '',
       'relations' => '1',
@@ -60,7 +90,7 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'required' => '0',
       'tags' => '1',
       'module' => 'features_tags_documents_publisher',
-      'weight' => '0',
+      'weight' => '-1',
       'nodes' => array(
         'documents' => 'documents',
       ),
@@ -75,13 +105,13 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'required' => '0',
       'tags' => '1',
       'module' => 'features_tags_documents_secondary',
-      'weight' => '0',
+      'weight' => '-4',
       'nodes' => array(
         'documents' => 'documents',
       ),
     ),
     'tags_documents_year' => array(
-      'name' => 'Year',
+      'name' => 'År',
       'description' => '',
       'help' => '',
       'relations' => '1',
@@ -90,7 +120,7 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'required' => '0',
       'tags' => '1',
       'module' => 'features_tags_documents_year',
-      'weight' => '0',
+      'weight' => '-10',
       'nodes' => array(
         'documents' => 'documents',
       ),

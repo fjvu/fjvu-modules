@@ -80,7 +80,7 @@ function fjvu_projects_views_default_views() {
     'title' => 'Projekter',
     'description' => '',
     'weight' => '0',
-    'name' => 'primary-links',
+    'name' => 'navigation',
   ));
   $handler->override_option('tab_options', array(
     'type' => 'none',

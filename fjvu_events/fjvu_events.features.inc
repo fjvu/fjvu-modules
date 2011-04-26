@@ -18,7 +18,7 @@ function fjvu_events_node_info() {
     'event' => array(
       'name' => t('Event'),
       'module' => 'features',
-      'description' => t('En begivenhed.'),
+      'description' => t('Eventformen bruges til oprettelse af begivenheder –fx generalforsamling, workshops og lignende.'),
       'has_title' => '1',
       'title_label' => t('Navn'),
       'has_body' => '1',

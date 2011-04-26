@@ -189,7 +189,7 @@ function fjvu_events_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'form_build_id_event';
-  $strongarm->value = 'form-b87fc768c636508a94f642f8ff730f43';
+  $strongarm->value = 'form-bf36120f95ece1568861ac18a1ff4211';
 
   $export['form_build_id_event'] = $strongarm;
   $strongarm = new stdClass;

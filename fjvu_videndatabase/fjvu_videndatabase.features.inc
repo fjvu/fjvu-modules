@@ -18,7 +18,7 @@ function fjvu_videndatabase_node_info() {
     'videndatabase' => array(
       'name' => t('Videndatabase'),
       'module' => 'features',
-      'description' => '',
+      'description' => t('Videndatabaseformen bruges i forbindelse med uploading af materiale til videndatabasen.'),
       'has_title' => '1',
       'title_label' => t('Titel på dokument'),
       'has_body' => '1',
