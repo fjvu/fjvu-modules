@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the FJVU Frontpage Slides feature.
+ */
+
+include_once('fjvu_frontpage_slides.features.inc');
