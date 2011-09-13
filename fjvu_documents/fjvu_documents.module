@@ -1,3 +1,7 @@
 <?php
+/**
+ * @file
+ * Code for the FJVU Documents feature.
+ */
 
 include_once('fjvu_documents.features.inc');

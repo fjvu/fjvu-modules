@@ -1,128 +1,173 @@
 <?php
+/**
+ * @file
+ * fjvu_documents.features.taxonomy.inc
+ */
 
 /**
  * Implementation of hook_taxonomy_default_vocabularies().
  */
 function fjvu_documents_taxonomy_default_vocabularies() {
   return array(
-    'documents_materials' => array(
+    'vocabulary_10' => array(
       'name' => 'Materialer',
+      'machine_name' => 'vocabulary_10',
       'description' => '',
-      'help' => '',
-      'relations' => '1',
       'hierarchy' => '0',
-      'multiple' => '0',
-      'required' => '0',
-      'tags' => '1',
       'module' => 'features_documents_materials',
       'weight' => '-7',
-      'nodes' => array(
-        'documents' => 'documents',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
       ),
     ),
-    'tags_documents' => array(
-      'name' => 'Primære tags',
-      'description' => '',
-      'help' => '',
-      'relations' => '1',
-      'hierarchy' => '0',
-      'multiple' => '0',
-      'required' => '0',
-      'tags' => '1',
-      'module' => 'features_tags_documents',
-      'weight' => '-6',
-      'nodes' => array(
-        'documents' => 'documents',
-      ),
-    ),
-    'tags_documents_authors' => array(
-      'name' => 'Forfattere',
-      'description' => '',
-      'help' => '',
-      'relations' => '1',
-      'hierarchy' => '0',
-      'multiple' => '1',
-      'required' => '0',
-      'tags' => '1',
-      'module' => 'features_tags_documents_authors',
-      'weight' => '-9',
-      'nodes' => array(
-        'documents' => 'documents',
-      ),
-    ),
-    'tags_documents_category' => array(
-      'name' => 'Kategori',
-      'description' => '',
-      'help' => '',
-      'relations' => '1',
-      'hierarchy' => '0',
-      'multiple' => '1',
-      'required' => '1',
-      'tags' => '0',
-      'module' => 'features_tags_documents_category',
-      'weight' => '-8',
-      'nodes' => array(
-        'documents' => 'documents',
-      ),
-    ),
-    'tags_documents_language' => array(
+    'vocabulary_12' => array(
       'name' => 'Sprog',
+      'machine_name' => 'vocabulary_12',
       'description' => '',
-      'help' => '',
-      'relations' => '1',
-      'hierarchy' => '1',
-      'multiple' => '0',
-      'required' => '1',
-      'tags' => '0',
+      'hierarchy' => '0',
       'module' => 'features_tags_documents_language',
       'weight' => '-3',
-      'nodes' => array(
-        'documents' => 'documents',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
       ),
     ),
-    'tags_documents_publisher' => array(
-      'name' => 'Udgiver',
-      'description' => '',
-      'help' => '',
-      'relations' => '1',
+    'vocabulary_3' => array(
+      'name' => 'Tags til videndatabasen',
+      'machine_name' => 'vocabulary_3',
+      'description' => 'Tags brugt i forbindelse med videndatabasen',
       'hierarchy' => '0',
-      'multiple' => '1',
-      'required' => '0',
-      'tags' => '1',
+      'module' => 'features_tags_documents',
+      'weight' => '-6',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'vocabulary_5' => array(
+      'name' => 'Kategori',
+      'machine_name' => 'vocabulary_5',
+      'description' => '',
+      'hierarchy' => '0',
+      'module' => 'features_tags_documents_category',
+      'weight' => '-8',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'vocabulary_6' => array(
+      'name' => 'Forfattere',
+      'machine_name' => 'vocabulary_6',
+      'description' => '',
+      'hierarchy' => '1',
+      'module' => 'features_tags_documents_authors',
+      'weight' => '-9',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'vocabulary_7' => array(
+      'name' => 'Kilde',
+      'machine_name' => 'vocabulary_7',
+      'description' => '',
+      'hierarchy' => '0',
       'module' => 'features_tags_documents_publisher',
       'weight' => '-1',
-      'nodes' => array(
-        'documents' => 'documents',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
       ),
     ),
-    'tags_documents_secondary' => array(
-      'name' => 'Sekundære tags',
-      'description' => '',
-      'help' => '',
-      'relations' => '1',
-      'hierarchy' => '0',
-      'multiple' => '1',
-      'required' => '0',
-      'tags' => '1',
-      'module' => 'features_tags_documents_secondary',
-      'weight' => '-4',
-      'nodes' => array(
-        'documents' => 'documents',
-      ),
-    ),
-    'tags_documents_year' => array(
+    'vocabulary_8' => array(
       'name' => 'År',
+      'machine_name' => 'vocabulary_8',
       'description' => '',
-      'help' => '',
-      'relations' => '1',
       'hierarchy' => '0',
-      'multiple' => '1',
-      'required' => '0',
-      'tags' => '1',
       'module' => 'features_tags_documents_year',
       'weight' => '-10',
-      'nodes' => array(
-        'documents' => 'documents',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
       ),
     ),
   );

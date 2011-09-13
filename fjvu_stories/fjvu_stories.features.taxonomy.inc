@@ -1,23 +1,35 @@
 <?php
+/**
+ * @file
+ * fjvu_stories.features.taxonomy.inc
+ */
 
 /**
  * Implementation of hook_taxonomy_default_vocabularies().
  */
 function fjvu_stories_taxonomy_default_vocabularies() {
   return array(
-    'tags' => array(
-      'name' => 'Tags',
-      'description' => '',
-      'help' => '',
-      'relations' => '1',
+    'vocabulary_4' => array(
+      'name' => 'Tags til nyheder og artikler',
+      'machine_name' => 'vocabulary_4',
+      'description' => 'Tags brugt i forbindelse med nyheder',
       'hierarchy' => '0',
-      'multiple' => '1',
-      'required' => '0',
-      'tags' => '1',
       'module' => 'features_tags',
       'weight' => '-2',
-      'nodes' => array(
-        'story' => 'story',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
       ),
     ),
   );

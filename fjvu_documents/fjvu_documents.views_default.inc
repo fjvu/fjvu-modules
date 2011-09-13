@@ -1,511 +1,324 @@
 <?php
+/**
+ * @file
+ * fjvu_documents.views_default.inc
+ */
 
 /**
  * Implementation of hook_views_default_views().
  */
 function fjvu_documents_views_default_views() {
-  $views = array();
+  $export = array();
 
-  // Exported view: documents_list
   $view = new view;
   $view->name = 'documents_list';
   $view->description = 'Documents list';
   $view->tag = '';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->human_name = '';
+  $view->core = 0;
+  $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
-  $handler->override_option('fields', array(
-    'field_documents_year_value' => array(
-      'label' => 'Årstal',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'widget',
-      'format' => 'default',
-      'multiple' => array(
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_to' => '',
-        'group' => '',
-      ),
-      'repeat' => array(
-        'show_repeat_rule' => '',
-      ),
-      'fromto' => array(
-        'fromto' => 'both',
-      ),
-      'exclude' => 1,
-      'id' => 'field_documents_year_value',
-      'table' => 'node_data_field_documents_year',
-      'field' => 'field_documents_year_value',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
-    ),
+  $handler->display->display_options['title'] = 'Videndatabase';
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
+  $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Brug søgekriterierne til venstre.';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = '1';
+  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elementer pr. side';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'body' => 'title',
+    'field_documents_year' => 'field_documents_year',
+    'taxonomy_vocabulary_6' => 'taxonomy_vocabulary_6',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_documents_year';
+  $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
-      'label' => 'Titel',
-      'alter' => array(
-        'alter_text' => 1,
-        'text' => '[title] ([field_documents_year_value])',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 1,
-      'exclude' => 0,
-      'id' => 'title',
-      'table' => 'node',
-      'field' => 'title',
-      'relationship' => 'none',
-      'override' => array(
-        'button' => 'Override',
-      ),
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '<br>',
     ),
-    'teaser' => array(
-      'label' => 'Teaser',
-      'alter' => array(
-        'alter_text' => 1,
-        'text' => '[teaser]...',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 1,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'exclude' => 0,
-      'id' => 'teaser',
-      'table' => 'node_revisions',
-      'field' => 'teaser',
-      'relationship' => 'none',
-      'override' => array(
-        'button' => 'Override',
-      ),
-    ),
-    'tid_1' => array(
-      'label' => 'Oplysninger',
-      'alter' => array(
-        'alter_text' => 1,
-        'text' => '<strong>[tid_1-vocabulary]</strong>: [tid_1]',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 1,
-      'empty_zero' => 0,
-      'type' => 'ul',
+    'body' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
       'separator' => '',
-      'link_to_taxonomy' => 0,
-      'limit' => 1,
-      'vids' => array(
-        '6' => 6,
-        '5' => 5,
-        '8' => 0,
-        '10' => 0,
-        '3' => 0,
-        '2' => 0,
-        '9' => 0,
-        '12' => 0,
-        '4' => 0,
-        '7' => 0,
-      ),
-      'exclude' => 0,
-      'id' => 'tid_1',
-      'table' => 'term_node',
-      'field' => 'tid',
-      'relationship' => 'none',
-      'override' => array(
-        'button' => 'Override',
-      ),
     ),
-  ));
-  $handler->override_option('sorts', array(
-    'field_documents_year_value' => array(
-      'order' => 'DESC',
-      'delta' => -1,
-      'id' => 'field_documents_year_value',
-      'table' => 'node_data_field_documents_year',
-      'field' => 'field_documents_year_value',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
+    'field_documents_year' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
     ),
-    'title' => array(
-      'order' => 'ASC',
-      'id' => 'title',
-      'table' => 'node',
-      'field' => 'title',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
+    'taxonomy_vocabulary_6' => array(
+      'align' => '',
+      'separator' => '',
     ),
-  ));
-  $handler->override_option('arguments', array(
-    'tid' => array(
-      'default_action' => 'ignore',
-      'style_plugin' => 'default_summary',
-      'style_options' => array(),
-      'wildcard' => 'all',
-      'wildcard_substitution' => 'All',
-      'title' => '',
-      'breadcrumb' => '',
-      'default_argument_type' => 'fixed',
-      'default_argument' => '',
-      'validate_type' => 'none',
-      'validate_fail' => 'not found',
-      'break_phrase' => 0,
-      'add_table' => 0,
-      'require_value' => 0,
-      'reduce_duplicates' => 0,
-      'set_breadcrumb' => 0,
-      'id' => 'tid',
-      'table' => 'term_node',
-      'field' => 'tid',
-      'validate_user_argument_type' => 'uid',
-      'validate_user_roles' => array(
-        '2' => 0,
-      ),
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
-      'default_options_div_prefix' => '',
-      'default_argument_fixed' => '',
-      'default_argument_user' => 0,
-      'default_argument_php' => '',
-      'validate_argument_node_type' => array(
-        'documents' => 0,
-        'event' => 0,
-        'projects' => 0,
-        'story' => 0,
-        'videndatabase' => 0,
-        'ipaper' => 0,
-        'mass_contact' => 0,
-        'page' => 0,
-      ),
-      'validate_argument_node_access' => 0,
-      'validate_argument_nid_type' => 'nid',
-      'validate_argument_vocabulary' => array(
-        '4' => 0,
-        '3' => 0,
-        '5' => 0,
-        '1' => 0,
-        '2' => 0,
-        '6' => 0,
-      ),
-      'validate_argument_type' => 'tid',
-      'validate_argument_transform' => 0,
-      'validate_user_restrict_roles' => 0,
-      'validate_argument_node_flag_name' => '*relationship*',
-      'validate_argument_node_flag_test' => 'flaggable',
-      'validate_argument_node_flag_id_type' => 'id',
-      'validate_argument_user_flag_name' => '*relationship*',
-      'validate_argument_user_flag_test' => 'flaggable',
-      'validate_argument_user_flag_id_type' => 'id',
-      'validate_argument_signup_status' => 'any',
-      'validate_argument_signup_node_access' => 0,
-      'validate_argument_php' => '',
-    ),
-  ));
-  $handler->override_option('filters', array(
-    'type' => array(
-      'operator' => 'in',
-      'value' => array(
-        'documents' => 'documents',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'type',
-      'table' => 'node',
-      'field' => 'type',
-      'relationship' => 'none',
-    ),
-    'status' => array(
-      'operator' => '=',
-      'value' => '1',
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'status',
-      'table' => 'node',
-      'field' => 'status',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('access', array(
-    'type' => 'none',
-  ));
-  $handler->override_option('cache', array(
-    'type' => 'none',
-  ));
-  $handler->override_option('title', 'Videndatabase');
-  $handler->override_option('use_pager', 'mini');
-  $handler->override_option('style_plugin', 'table');
-  $handler->override_option('style_options', array(
-    'grouping' => '',
-    'override' => 0,
-    'sticky' => 1,
-    'order' => 'asc',
-    'columns' => array(
-      'field_documents_year_value' => 'title',
-      'title' => 'title',
-      'teaser' => 'title',
-      'tid_1' => 'tid_1',
-    ),
-    'info' => array(
-      'field_documents_year_value' => array(
-        'sortable' => 0,
-        'separator' => '',
-      ),
-      'title' => array(
-        'sortable' => 1,
-        'separator' => '<br>',
-      ),
-      'teaser' => array(
-        'separator' => '',
-      ),
-      'tid_1' => array(
-        'separator' => '',
-      ),
-    ),
-    'default' => '-1',
-  ));
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 1;
+  $handler->display->display_options['style_options']['empty_table'] = 0;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'Den valgte søgning gav ingen resultater.';
+  $handler->display->display_options['empty']['area']['format'] = '1';
+  $handler->display->display_options['empty']['area']['tokenize'] = 0;
+  /* Felt: Indhold: Titel */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] ([field_documents_year])';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Felt: Indhold: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['body']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['body']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['body']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['body']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '600',
+  );
+  $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
+  /* Felt: Indhold: Årstal */
+  $handler->display->display_options['fields']['field_documents_year']['id'] = 'field_documents_year';
+  $handler->display->display_options['fields']['field_documents_year']['table'] = 'field_data_field_documents_year';
+  $handler->display->display_options['fields']['field_documents_year']['field'] = 'field_documents_year';
+  $handler->display->display_options['fields']['field_documents_year']['label'] = 'År';
+  $handler->display->display_options['fields']['field_documents_year']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_documents_year']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_documents_year']['settings'] = array(
+    'format_type' => 'year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['fields']['field_documents_year']['field_api_classes'] = 0;
+  /* Felt: Indhold: Forfattere */
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['id'] = 'taxonomy_vocabulary_6';
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['table'] = 'field_data_taxonomy_vocabulary_6';
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['field'] = 'taxonomy_vocabulary_6';
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['group_rows'] = 1;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['taxonomy_vocabulary_6']['field_api_classes'] = 0;
+  /* Sorteringskriterie: Indhold: Titel */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Indhold: Has taxonomy term ID */
+  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['exception']['title_enable'] = 1;
+  $handler->display->display_options['arguments']['tid']['exception']['title'] = 'All';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['tid']['specify_validation'] = 1;
+  $handler->display->display_options['arguments']['tid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['tid']['add_table'] = 0;
+  $handler->display->display_options['arguments']['tid']['require_value'] = 0;
+  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['arguments']['tid']['set_breadcrumb'] = 0;
+  /* Filter criterion: Indhold: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'documents' => 'documents',
+  );
+  $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
+  /* Filter criterion: Indhold: Udgivet */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
-  $handler->override_option('block_description', '');
-  $handler->override_option('block_caching', -1);
+
+  /* Display: Side */
   $handler = $view->new_display('page', 'Side', 'page_1');
-  $handler->override_option('filters', array(
-    'type' => array(
-      'operator' => 'in',
-      'value' => array(
-        'documents' => 'documents',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'type',
-      'table' => 'node',
-      'field' => 'type',
-      'relationship' => 'none',
-    ),
-    'status' => array(
-      'operator' => '=',
-      'value' => '1',
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'status',
-      'table' => 'node',
-      'field' => 'status',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
-    ),
-    'keys' => array(
-      'operator' => 'required',
-      'value' => '',
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'keys_op',
-        'identifier' => 'keys',
-        'label' => 'Søg',
-        'optional' => 1,
-        'remember' => 0,
-      ),
-      'id' => 'keys',
-      'table' => 'search_index',
-      'field' => 'keys',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-    ),
-    'tid' => array(
-      'operator' => 'or',
-      'value' => array(),
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'tid_op',
-        'identifier' => 'tid',
-        'label' => 'Årstal',
-        'optional' => 1,
-        'single' => 1,
-        'remember' => 0,
-        'reduce' => 0,
-      ),
-      'type' => 'select',
-      'limit' => TRUE,
-      'vid' => '8',
-      'id' => 'tid',
-      'table' => 'term_node',
-      'field' => 'tid',
-      'hierarchy' => 0,
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-      'reduce_duplicates' => 0,
-    ),
-    'tid_3' => array(
-      'operator' => 'or',
-      'value' => array(),
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'tid_3_op',
-        'identifier' => 'tid_3',
-        'label' => 'Udgiver',
-        'optional' => 1,
-        'single' => 1,
-        'remember' => 0,
-        'reduce' => 0,
-      ),
-      'type' => 'select',
-      'limit' => TRUE,
-      'vid' => '7',
-      'id' => 'tid_3',
-      'table' => 'term_node',
-      'field' => 'tid',
-      'hierarchy' => 0,
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-      'reduce_duplicates' => 0,
-    ),
-    'tid_1' => array(
-      'operator' => 'or',
-      'value' => array(),
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'tid_1_op',
-        'identifier' => 'tid_1',
-        'label' => 'Kategori',
-        'optional' => 1,
-        'single' => 1,
-        'remember' => 0,
-        'reduce' => 0,
-      ),
-      'type' => 'select',
-      'limit' => TRUE,
-      'vid' => '5',
-      'id' => 'tid_1',
-      'table' => 'term_node',
-      'field' => 'tid',
-      'hierarchy' => 1,
-      'override' => array(
-        'button' => 'Use default',
-      ),
-      'relationship' => 'none',
-      'reduce_duplicates' => 0,
-    ),
-  ));
-  $handler->override_option('header', '<p>Videndatabasen er en ressource til viden om fjernvarme og fjernkøling. Databasen indeholder rapporter, artikler, links og henvisninger til kontaktpersoner og øvrige ressourcer.</p>');
-  $handler->override_option('header_format', '1');
-  $handler->override_option('header_empty', 1);
-  $handler->override_option('path', 'documents');
-  $handler->override_option('menu', array(
-    'type' => 'normal',
-    'title' => 'Videndatabase',
-    'description' => '',
-    'weight' => '0',
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Overskrift: Global: Text area */
+  $handler->display->display_options['header']['text']['id'] = 'area';
+  $handler->display->display_options['header']['text']['table'] = 'views';
+  $handler->display->display_options['header']['text']['field'] = 'area';
+  $handler->display->display_options['header']['text']['empty'] = TRUE;
+  $handler->display->display_options['header']['text']['content'] = '<p>Videndatabasen indeholder rapporter, artikler, links og henvisninger til kontaktpersoner og øvrige ressourcer. Pt. indeholder videndatabasen over 200 dokumenter.</p>
+';
+  $handler->display->display_options['header']['text']['format'] = '1';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Indhold: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'documents' => 'documents',
+  );
+  $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
+  /* Filter criterion: Indhold: Udgivet */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Søg: Søgeord */
+  $handler->display->display_options['filters']['keys']['id'] = 'keys';
+  $handler->display->display_options['filters']['keys']['table'] = 'search_index';
+  $handler->display->display_options['filters']['keys']['field'] = 'keys';
+  $handler->display->display_options['filters']['keys']['operator'] = 'required';
+  $handler->display->display_options['filters']['keys']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['keys']['expose']['operator_id'] = 'keys_op';
+  $handler->display->display_options['filters']['keys']['expose']['label'] = 'Søg i videndatabasen';
+  $handler->display->display_options['filters']['keys']['expose']['operator'] = 'keys_op';
+  $handler->display->display_options['filters']['keys']['expose']['identifier'] = 'keys';
+  /* Filter criterion: Indhold: År (taxonomy_vocabulary_8) */
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['id'] = 'taxonomy_vocabulary_8_tid';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['table'] = 'field_data_taxonomy_vocabulary_8';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['field'] = 'taxonomy_vocabulary_8_tid';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['value'] = '';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['expose']['operator_id'] = 'taxonomy_vocabulary_8_tid_op';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['expose']['label'] = 'År';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['expose']['operator'] = 'taxonomy_vocabulary_8_tid_op';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['expose']['identifier'] = 'taxonomy_vocabulary_8_tid';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['expose']['reduce'] = 0;
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['vocabulary'] = 'vocabulary_8';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_8_tid']['error_message'] = 1;
+  /* Filter criterion: Indhold: Kilde (taxonomy_vocabulary_7) */
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['id'] = 'taxonomy_vocabulary_7_tid';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['table'] = 'field_data_taxonomy_vocabulary_7';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['field'] = 'taxonomy_vocabulary_7_tid';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['expose']['operator_id'] = 'taxonomy_vocabulary_7_tid_op';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['expose']['label'] = 'Kilde';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['expose']['operator'] = 'taxonomy_vocabulary_7_tid_op';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['expose']['identifier'] = 'taxonomy_vocabulary_7_tid';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['expose']['reduce'] = 0;
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['vocabulary'] = 'vocabulary_7';
+  $handler->display->display_options['filters']['taxonomy_vocabulary_7_tid']['error_message'] = 1;
+  $handler->display->display_options['path'] = 'documents';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Videndatabase';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $translatables['documents_list'] = array(
+    t('Defaults'),
+    t('Videndatabase'),
+    t('more'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Asc'),
+    t('Desc'),
+    t('Brug søgekriterierne til venstre.'),
+    t('Elementer pr. side'),
+    t('- All -'),
+    t('Forskydning'),
+    t('Den valgte søgning gav ingen resultater.'),
+    t('Titel'),
+    t('[title] ([field_documents_year])'),
+    t('År'),
+    t('Forfattere'),
+    t('All'),
+    t('Block'),
+    t('Side'),
+    t('<p>Videndatabasen indeholder rapporter, artikler, links og henvisninger til kontaktpersoner og øvrige ressourcer. Pt. indeholder videndatabasen over 200 dokumenter.</p>
+'),
+    t('Søg i videndatabasen'),
+    t('Kilde'),
+  );
+  $export['documents_list'] = $view;
 
-  $views[$view->name] = $view;
-
-  return $views;
+  return $export;
 }
