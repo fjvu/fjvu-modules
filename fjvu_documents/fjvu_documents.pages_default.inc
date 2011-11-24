@@ -189,7 +189,9 @@ function fjvu_documents_default_page_manager_pages() {
   $page->admin_title = 'Documents';
   $page->admin_description = '';
   $page->path = 'document';
-  $page->access = array();
+  $page->access = array(
+    'logic' => 'and',
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Videndatabase',
@@ -252,11 +254,11 @@ function fjvu_documents_default_page_manager_pages() {
     $pane->pid = 'new-1';
     $pane->panel = 'aside_alpha';
     $pane->type = 'block';
-    $pane->subtype = 'views--exp-documents_list-page_1';
+    $pane->subtype = 'views-5775b315313275148cb439a1abc72471';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'inherit_path' => 0,
+      'inherit_path' => 1,
       'override_title' => 0,
       'override_title_text' => '',
     );
@@ -264,7 +266,7 @@ function fjvu_documents_default_page_manager_pages() {
     $pane->style = array();
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'sidebar-box rounded-corners nofill green-box',
+      'css_class' => 'sidebar-box rounded-corners green-box nofill',
     );
     $pane->extras = array();
     $pane->position = 0;

@@ -184,11 +184,11 @@ function fjvu_stories_default_page_manager_pages() {
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'block';
-    $pane->subtype = 'views--exp-article_archive-page_1';
+    $pane->subtype = 'views-b1084016e373819258998fb5d7817652';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'inherit_path' => 0,
+      'inherit_path' => 1,
       'override_title' => 0,
       'override_title_text' => '',
     );

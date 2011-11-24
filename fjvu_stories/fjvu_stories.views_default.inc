@@ -72,6 +72,11 @@ function fjvu_stories_views_default_views() {
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['empty'] = FALSE;
+  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -567,6 +572,16 @@ function fjvu_stories_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Archive pane', 'panel_pane_2');
   $handler->display->display_options['display_description'] = 'Content pane used for showing all the stories';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'Ingen resultater fundet';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'Der blev ikke fundet nogen resultater. Prøv en anden søgning.';
+  $handler->display->display_options['empty']['area']['format'] = '1';
+  $handler->display->display_options['empty']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -704,6 +719,8 @@ function fjvu_stories_views_default_views() {
     t('View panes'),
     t('Archive pane'),
     t('Content pane used for showing all the stories'),
+    t('Ingen resultater fundet'),
+    t('Der blev ikke fundet nogen resultater. Prøv en anden søgning.'),
   );
   $export['article_archive'] = $view;
 
