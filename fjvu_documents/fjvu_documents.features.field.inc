@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function fjvu_documents_field_default_fields() {
   $fields = array();
@@ -41,7 +41,7 @@ function fjvu_documents_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '-3',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -117,7 +117,7 @@ function fjvu_documents_field_default_fields() {
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => '-4',
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -183,6 +183,17 @@ function fjvu_documents_field_default_fields() {
         'active' => '1',
         'module' => 'file',
         'settings' => array(
+          'filefield_sources' => array(
+            'filefield_sources' => array(),
+            'source_attach' => array(
+              'absolute' => 0,
+              'attach_mode' => 'move',
+              'path' => 'file_attach',
+            ),
+            'source_reference' => array(
+              'autocomplete' => '0',
+            ),
+          ),
           'progress_indicator' => 'bar',
         ),
         'type' => 'file_generic',
@@ -225,7 +236,7 @@ function fjvu_documents_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '-2',
+          'weight' => '10',
         ),
         'full' => array(
           'label' => 'above',
@@ -352,8 +363,8 @@ function fjvu_documents_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => 0,
             'vocabulary' => 'vocabulary_10',
+            'parent' => 0,
           ),
         ),
         'required' => FALSE,
@@ -372,7 +383,7 @@ function fjvu_documents_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '10',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -418,8 +429,8 @@ function fjvu_documents_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => 0,
             'vocabulary' => 'vocabulary_12',
+            'parent' => 0,
           ),
         ),
         'required' => TRUE,
@@ -438,7 +449,7 @@ function fjvu_documents_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '10',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -481,8 +492,8 @@ function fjvu_documents_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => 0,
             'vocabulary' => 'vocabulary_3',
+            'parent' => 0,
           ),
         ),
         'required' => FALSE,
@@ -501,7 +512,7 @@ function fjvu_documents_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '10',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -548,8 +559,8 @@ function fjvu_documents_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => 0,
             'vocabulary' => 'vocabulary_5',
+            'parent' => 0,
           ),
         ),
         'required' => TRUE,
@@ -568,7 +579,7 @@ function fjvu_documents_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '10',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -612,8 +623,8 @@ function fjvu_documents_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => 0,
             'vocabulary' => 'vocabulary_6',
+            'parent' => 0,
           ),
         ),
         'required' => FALSE,
@@ -632,7 +643,7 @@ function fjvu_documents_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '10',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -679,8 +690,8 @@ function fjvu_documents_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => 0,
             'vocabulary' => 'vocabulary_7',
+            'parent' => 0,
           ),
         ),
         'required' => FALSE,
@@ -699,7 +710,7 @@ function fjvu_documents_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '10',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -746,8 +757,8 @@ function fjvu_documents_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'parent' => 0,
             'vocabulary' => 'vocabulary_8',
+            'parent' => 0,
           ),
         ),
         'required' => FALSE,
@@ -766,7 +777,7 @@ function fjvu_documents_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '10',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -796,89 +807,10 @@ function fjvu_documents_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-documents-upload'
-  $fields['node-documents-upload'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'upload',
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'module' => 'file',
-      'settings' => array(
-        'default_file' => 0,
-        'display_default' => '1',
-        'display_field' => 1,
-        'uri_scheme' => 'public',
-      ),
-      'translatable' => '0',
-      'type' => 'file',
-    ),
-    'field_instance' => array(
-      'bundle' => 'documents',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_table',
-          'weight' => '0',
-        ),
-        'full' => array(
-          'label' => 'hidden',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_table',
-          'weight' => 0,
-        ),
-        'rss' => array(
-          'label' => 'hidden',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_table',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'upload',
-      'label' => 'File attachments',
-      'required' => 0,
-      'settings' => array(
-        'description_field' => 1,
-        'file_directory' => '',
-        'file_extensions' => 'jpg jpeg gif png txt doc xls pdf ppt pps odt ods odp docx xlsx',
-        'max_filesize' => '20 MB',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'file',
-        'settings' => array(
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'file_generic',
-        'weight' => '1',
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Brødtekst');
   t('Fil');
-  t('File attachments');
   t('Forfattere');
   t('Form der bruges til at oprette dokumenter til videndatabasen');
   t('Kategori');

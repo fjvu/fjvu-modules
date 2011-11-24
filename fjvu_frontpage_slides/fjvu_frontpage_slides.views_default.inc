@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function fjvu_frontpage_slides_views_default_views() {
   $export = array();
@@ -17,12 +17,13 @@ function fjvu_frontpage_slides_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Frontpage options';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = '<none>';
+  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -30,9 +31,12 @@ function fjvu_frontpage_slides_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elementer pr. side';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['style_plugin'] = 'slideshow';
   $handler->display->display_options['style_options']['slideshow_type'] = 'views_slideshow_cycle';
@@ -116,15 +120,16 @@ function fjvu_frontpage_slides_views_default_views() {
   $handler->display->display_options['fields']['field_frontpage_picture']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_frontpage_picture']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_frontpage_picture']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_frontpage_picture']['element_class'] = 'img-rounded-corners';
   $handler->display->display_options['fields']['field_frontpage_picture']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_frontpage_picture']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_frontpage_picture']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['field_frontpage_picture']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_frontpage_picture']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_frontpage_picture']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_frontpage_picture']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_frontpage_picture']['settings'] = array(
     'image_style' => 'frontpage',
-    'image_link' => '',
+    'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_frontpage_picture']['field_api_classes'] = 0;
   /* Felt: Indhold: Body */
@@ -159,14 +164,14 @@ function fjvu_frontpage_slides_views_default_views() {
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
-  /* Filter criterion: Indhold: Udgivet */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Indhold: Type */
+  /* Filterkriterie: Indhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -179,14 +184,14 @@ function fjvu_frontpage_slides_views_default_views() {
   $translatables['frontpage_options'] = array(
     t('Master'),
     t('<none>'),
-    t('more'),
+    t('mere'),
     t('Udfør'),
     t('Gendan'),
     t('Sortér efter'),
-    t('Asc'),
-    t('Desc'),
+    t('Stigende'),
+    t('Faldende'),
     t('Elementer pr. side'),
-    t('- All -'),
+    t('- Alle -'),
     t('Forskydning'),
     t('Block'),
   );

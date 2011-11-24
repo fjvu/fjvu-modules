@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_api().
+ * Implements hook_views_api().
  */
 function fjvu_frontpage_slides_views_api() {
   list($module, $api) = func_get_args();
@@ -15,7 +15,7 @@ function fjvu_frontpage_slides_views_api() {
 }
 
 /**
- * Implementation of hook_node_info().
+ * Implements hook_node_info().
  */
 function fjvu_frontpage_slides_node_info() {
   $items = array(

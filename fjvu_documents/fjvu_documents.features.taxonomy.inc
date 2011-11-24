@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_taxonomy_default_vocabularies().
+ * Implements hook_taxonomy_default_vocabularies().
  */
 function fjvu_documents_taxonomy_default_vocabularies() {
   return array(
@@ -16,6 +16,7 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'features_documents_materials',
       'weight' => '-7',
+      'metatags' => array(),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -39,6 +40,7 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'features_tags_documents_language',
       'weight' => '-3',
+      'metatags' => array(),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -62,6 +64,7 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'features_tags_documents',
       'weight' => '-6',
+      'metatags' => array(),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -85,6 +88,7 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'features_tags_documents_category',
       'weight' => '-8',
+      'metatags' => array(),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -108,6 +112,7 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'hierarchy' => '1',
       'module' => 'features_tags_documents_authors',
       'weight' => '-9',
+      'metatags' => array(),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -131,6 +136,7 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'features_tags_documents_publisher',
       'weight' => '-1',
+      'metatags' => array(),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -154,6 +160,7 @@ function fjvu_documents_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'features_tags_documents_year',
       'weight' => '-10',
+      'metatags' => array(),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

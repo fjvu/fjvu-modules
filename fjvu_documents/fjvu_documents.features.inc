@@ -5,7 +5,17 @@
  */
 
 /**
- * Implementation of hook_views_api().
+ * Implements hook_ctools_plugin_api().
+ */
+function fjvu_documents_ctools_plugin_api() {
+  list($module, $api) = func_get_args();
+  if ($module == "page_manager" && $api == "pages_default") {
+    return array("version" => "1");
+  }
+}
+
+/**
+ * Implements hook_views_api().
  */
 function fjvu_documents_views_api() {
   list($module, $api) = func_get_args();
@@ -15,7 +25,7 @@ function fjvu_documents_views_api() {
 }
 
 /**
- * Implementation of hook_node_info().
+ * Implements hook_node_info().
  */
 function fjvu_documents_node_info() {
   $items = array(

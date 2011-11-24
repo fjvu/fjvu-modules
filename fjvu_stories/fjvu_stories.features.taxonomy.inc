@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_taxonomy_default_vocabularies().
+ * Implements hook_taxonomy_default_vocabularies().
  */
 function fjvu_stories_taxonomy_default_vocabularies() {
   return array(
@@ -16,6 +16,7 @@ function fjvu_stories_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'features_tags',
       'weight' => '-2',
+      'metatags' => array(),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
